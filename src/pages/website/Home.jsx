@@ -9,24 +9,20 @@ const Home = () => (
         <div className="flex flex-col items-center justify-center py-40">
           <div className="w-9/12 space-y-8">
             <h4 className="text-4xl">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit, quis!
+             Elevate your <br/> wardrobe with our <br/> fashion essentials
             </h4>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Recusandae est error eaque necessitatibus, corporis sint
-              architecto, in alias deleniti quis, sapiente suscipit qui veniam
-              tempore?
+              Experience the ultimate relaxation, with our collection of serene and tranquil spa inspired designs
             </p>
             <div className="pt-6">
-              <button className="flex items-center justify-center px-6 py-2 text-white rounded bg-[#ee9598] hover:bg-[#ee9598] gap-x-2">
+              <button className="flex items-center justify-center px-6 py-2 text-white rounded bg-[#ee9598] hover:bg-[#e5a6a8] gap-x-2">
                 Get Started <BsArrowRight />
               </button>
             </div>
           </div>
         </div>
-        <div className="hidden md:items-center md:justify-center md:flex md:relative">
-          <div className="relative w-full h-full border border-r-0 bg-amber-800">
+        <div className="hidden pt-4 md:items-center md:justify-center md:flex md:relative">
+          <div className="relative w-full h-[80%] rounded-l-lg border border-r-0 bg-[#ee9598]">
             <img
               src={WomanImg}
               alt=""
