@@ -19,7 +19,7 @@ const Home = () => (
               tempore?
             </p>
             <div className="pt-6">
-              <button className="flex items-center justify-center px-6 py-2 text-white rounded bg-amber-800 hover:bg-amber-700 gap-x-2">
+              <button className="flex items-center justify-center px-6 py-2 text-white rounded bg-[#ee9598] hover:bg-[#ee9598] gap-x-2">
                 Get Started <BsArrowRight />
               </button>
             </div>
