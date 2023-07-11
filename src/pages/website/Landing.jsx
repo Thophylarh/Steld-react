@@ -4,6 +4,7 @@ import IconsDisplay from "./IconsDisplay";
 import Marquee from "react-fast-marquee";
 import Products from "./Products";
 import Shop from "./Shop";
+import Showcase from "./Showcase";
 
 
 
@@ -23,6 +24,7 @@ const Landing = () => {
      </Marquee>
      <Products/>
      <Shop/>
+     <Showcase/>
       
     </div>
   );
