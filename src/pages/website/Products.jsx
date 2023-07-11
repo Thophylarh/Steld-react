@@ -1,6 +1,7 @@
 import React from "react";
 import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
 import { WomanImg } from "../../assets/png";
+import { blazer, jacket, shirt, sweatShirt } from "../../assets/Jpg";
 
 const Products = () => {
   const productNav = [
@@ -14,25 +15,25 @@ const Products = () => {
       id: 0,
       title: "Cotton shirt",
       price: "$113.00",
-      image: WomanImg,
+      image: blazer,
     },
     {
       id: 0,
       title: "Blue Blazer",
       price: "$235.00",
-      image: WomanImg,
+      image: sweatShirt,
     },
     {
       id: 0,
       title: "Black T-shirt",
       price: "$79.00",
-      image: WomanImg,
+      image: shirt,
     },
     {
       id: 0,
       title: "Check shirt",
       price: "$98.00",
-      image: WomanImg,
+      image: jacket ,
     },
   ];
   return (

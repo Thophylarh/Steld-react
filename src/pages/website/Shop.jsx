@@ -4,7 +4,7 @@ import { WomanImg } from "../../assets/png";
 const Shop = () => {
   return (
     <div className="st_container">
-        <div className="py-40 ">
+        <div className="py-60 ">
         <div className="items-center md:justify-between md:flex ">
         <div className="w-full h-[100%] rounded-lg  bg-[#ee9598] ">
           <img

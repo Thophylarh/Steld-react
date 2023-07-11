@@ -5,6 +5,7 @@ import Marquee from "react-fast-marquee";
 import Products from "./Products";
 import Shop from "./Shop";
 import Showcase from "./Showcase";
+import Collections from "./Collections";
 
 
 
@@ -25,6 +26,7 @@ const Landing = () => {
      <Products/>
      <Shop/>
      <Showcase/>
+     <Collections/>
       
     </div>
   );
