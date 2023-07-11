@@ -36,8 +36,8 @@ const Products = () => {
     },
   ];
   return (
-    <div className="st_container ">
-      <div className="items-center md:justify-center md:flex-col md:flex ">
+    <div className="py-40 st_container ">
+      <div className="items-center md:justify-center md:flex-col md:flex">
         <h1 className="text-4xl ">Explore more of our product</h1>
         <p className=" sm:text-xs text-sm text-[##929292] pt-4">
           All the collections you may need, you can find rom us without{" "}
@@ -72,10 +72,10 @@ const Products = () => {
           <BsArrowRight className="text-white " />
         </div>
       </div>
-      <div className="grid md:grid-cols-4 gap-x-4 pt-[1rem]">
+      <div className="md:flex md:justify-between items-center gap-x-4 pt-[1rem]">
         {productItems.map(({ id, title, price, image }) => (
           <div className="" key={id}>
-            <div className="bg-[#f7f7f7] p-4  transition-transform duration-300 hover:scale-105 relative">
+            <div className="bg-[#f7f7f7] p-4  transition-transform duration-300 hover:scale-105 ">
               <img src={image} alt={title} className="h-[260px] w-[260px]  " />
             </div>
             <h6>{title}</h6>
