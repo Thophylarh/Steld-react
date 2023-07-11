@@ -4,7 +4,7 @@ import { chanel, dior, gucci, nike } from "../../assets/png";
 const IconsDisplay = () => {
   return (
     <div className="st_container">
-      <div className="grid grid-cols-4 gap-x-[12rem] items-center">
+      <div className="hidden  md:grid md:grid-cols-4 md:gap-x-[12rem] md:items-center py-40 ">
         <img
           src={chanel}
           alt=""

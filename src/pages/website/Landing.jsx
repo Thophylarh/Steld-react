@@ -2,6 +2,7 @@ import React from "react";
 import Home from "./Home";
 import IconsDisplay from "./IconsDisplay";
 import Marquee from "react-fast-marquee";
+import Products from "./Products";
 
 
 
@@ -19,6 +20,7 @@ const Landing = () => {
      >
      <IconsDisplay/>
      </Marquee>
+     <Products/>
       
     </div>
   );
