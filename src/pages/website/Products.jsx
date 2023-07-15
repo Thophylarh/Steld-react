@@ -10,6 +10,7 @@ const Products = () => {
     { id: 2, title: "Women" },
     { id: 3, title: "Children" },
   ];
+
   const productItems = [
     {
       id: 0,
@@ -33,7 +34,7 @@ const Products = () => {
       id: 0,
       title: "Check shirt",
       price: "$98.00",
-      image: jacket ,
+      image: jacket,
     },
   ];
   return (
@@ -42,16 +43,17 @@ const Products = () => {
         <h1 className="text-4xl ">Explore more of our product</h1>
         <p className=" sm:text-xs text-sm text-[##929292] pt-4">
           All the collections you may need, you can find rom us without{" "}
-          <span className="md:items-center md:justify-center md:flex">any hassle</span>
+          <span className="md:items-center md:justify-center md:flex">
+            any hassle
+          </span>
         </p>
-       
+
         <nav className="pt-6">
           <ul className="flex items-center justify-center text-sm gap-x-8">
             {productNav.map(({ id, title }) => (
-              <li className="w-fit">
+              <li className="w-fit" key={id}>
                 <a
                   href="#!"
-                  key={id}
                   className="bg-[#ee9598] hover:bg-[#e5a6a8] rounded-full text-white py-2 px-4 "
                 >
                   {title}
@@ -61,9 +63,7 @@ const Products = () => {
           </ul>
         </nav>
       </div>
-      
 
-     
       <div className="flex items-center justify-end pt-6 gap-x-1">
         <div className="px-5 py-2 bg-[#ccc] rounded-full justify-self-end">
           <BsArrowLeft className=" text-[#1f2123] " />
