@@ -1,5 +1,9 @@
 import axios from "../../lib/axios"
 
+/**
+ * Description: Fetch all products
+ * @returns {any}
+ */
 export const GetAllProductsApi = async () => {
   try {
     const url = "/products";

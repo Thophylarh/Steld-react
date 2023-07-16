@@ -1,48 +1,52 @@
-import React, { useEffect } from "react";
-import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
-import { WomanImg } from "../../assets/png";
+import React, { useEffect, useState } from "react";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { blazer, jacket, shirt, sweatShirt } from "../../assets/Jpg";
+import { WomanImg } from "../../assets/png";
 import { GetAllProductsApi } from "../../services";
 
-const Products = () => {
-  const productNav = [
-    { id: 0, title: "All" },
-    { id: 1, title: "Men" },
-    { id: 2, title: "Women" },
-    { id: 3, title: "Children" },
-  ];
+const productNav = [
+  { id: 0, title: "All" },
+  { id: 1, title: "Men" },
+  { id: 2, title: "Women" },
+  { id: 3, title: "Children" },
+];
 
-  const productItems = [
-    {
-      id: 0,
-      title: "Cotton shirt",
-      price: "$113.00",
-      image: blazer,
-    },
-    {
-      id: 1,
-      title: "Blue Blazer",
-      price: "$235.00",
-      image: sweatShirt,
-    },
-    {
-      id: 2,
-      title: "Black T-shirt",
-      price: "$79.00",
-      image: shirt,
-    },
-    {
-      id: 3,
-      title: "Check shirt",
-      price: "$98.00",
-      image: jacket,
-    },
-  ];
+const productItems = [
+  {
+    id: 0,
+    title: "Cotton shirt",
+    price: "$113.00",
+    image: blazer,
+  },
+  {
+    id: 1,
+    title: "Blue Blazer",
+    price: "$235.00",
+    image: sweatShirt,
+  },
+  {
+    id: 2,
+    title: "Black T-shirt",
+    price: "$79.00",
+    image: shirt,
+  },
+  {
+    id: 3,
+    title: "Check shirt",
+    price: "$98.00",
+    image: jacket,
+  },
+];
+
+const Products = () => {
+  const [allProducts, setAllProducts] = useState([]);
 
   const fetchAllProducts = async () => {
     try {
       const res = await GetAllProductsApi();
       console.log(res);
+      const products = res.slice(0, 4);
+      setAllProducts(products);
     } catch (error) {
       console.log(error);
     }
@@ -88,14 +92,20 @@ const Products = () => {
           <BsArrowRight className="text-white " />
         </div>
       </div>
-      <div className="   md:flex md:justify-between items-center gap-x-4 pt-[1rem]">
-        {productItems.map(({ id, title, price, image }) => (
-          <div className="" key={id}>
-            <div className="p-4 transition-transform duration-300 hover:scale-105">
-              <img src={image} alt={title} className="h-[260px] w-[260px]  " />
+      <div className="   md:flex md:justify-between items-center  pt-[1rem]">
+        {allProducts.map(({ id, title, price, image }) => (
+          <div className=" border h-[520px] flex flex-col justify-between " key={id}>
+            <div className="relative transition-transform duration-300 hover:scale-105 h-96 w-96">
+              <img
+                src={image}
+                alt={title}
+                className="absolute object-contain w-full h-full"
+              />
             </div>
-            <h6>{title}</h6>
-            <p>{price}</p>
+            <div className="w-full p-4 space-y-2 border h-1/5">
+              <h6>{title}</h6>
+              <p>${price}</p>
+            </div>
           </div>
         ))}
       </div>
