@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
 import { WomanImg } from "../../assets/png";
 import { blazer, jacket, shirt, sweatShirt } from "../../assets/Jpg";
+import { GetAllProductsApi } from "../../services";
 
 const Products = () => {
   const productNav = [
@@ -19,24 +20,38 @@ const Products = () => {
       image: blazer,
     },
     {
-      id: 0,
+      id: 1,
       title: "Blue Blazer",
       price: "$235.00",
       image: sweatShirt,
     },
     {
-      id: 0,
+      id: 2,
       title: "Black T-shirt",
       price: "$79.00",
       image: shirt,
     },
     {
-      id: 0,
+      id: 3,
       title: "Check shirt",
       price: "$98.00",
       image: jacket,
     },
   ];
+
+  const fetchAllProducts = async () => {
+    try {
+      const res = await GetAllProductsApi();
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAllProducts();
+  }, []);
+
   return (
     <div className="py-40 st_container ">
       <div className="items-center md:justify-center md:flex-col md:flex">
