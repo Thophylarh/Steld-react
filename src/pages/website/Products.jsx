@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { blazer, jacket, shirt, sweatShirt } from "../../assets/Jpg";
 import { WomanImg } from "../../assets/png";
-import { GetAllProductsApi } from "../../services";
+import { GetAllCategoriesApi, GetAllProductsApi } from "../../services";
 
 const productNav = [
   { id: 0, title: "All" },
@@ -40,20 +40,43 @@ const productItems = [
 
 const Products = () => {
   const [allProducts, setAllProducts] = useState([]);
+  const [allCategories, setAllCategories] = useState([]);
 
   const fetchAllProducts = async () => {
     try {
       const res = await GetAllProductsApi();
-      console.log(res);
+
       const products = res.slice(0, 4);
-      setAllProducts(products);
+
+      return products;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchAllCategories = async () => {
+    try {
+      const res = await GetAllCategoriesApi();
+
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchAllProductsAndCategories = async () => {
+    try {
+      const res = await Promise.all([fetchAllProducts(), fetchAllCategories()]);
+      console.log(res);
+      setAllProducts(res[0])
+      setAllCategories(res[1])
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    fetchAllProducts();
+    fetchAllProductsAndCategories();
   }, []);
 
   return (
@@ -94,7 +117,10 @@ const Products = () => {
       </div>
       <div className="   md:flex md:justify-between items-center  pt-[1rem]">
         {allProducts.map(({ id, title, price, image }) => (
-          <div className=" border h-[520px] flex flex-col justify-between " key={id}>
+          <div
+            className=" border h-[520px] flex flex-col justify-between "
+            key={id}
+          >
             <div className="relative transition-transform duration-300 hover:scale-105 h-96 w-96">
               <img
                 src={image}
