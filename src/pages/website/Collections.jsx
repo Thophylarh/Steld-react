@@ -57,7 +57,7 @@ const Collections = () => {
         <div className="flex items-center justify-between w-9/12 gap-x-4">
           {collectionsList.map(({ id, title, price,img }) => (
             <div key={id}>
-              <div className="bg-[#ccc] px-4 ">
+              <div className="px-4 pb-4 transition-transform duration-300 hover:scale-105">
                 <img src={img} alt="" className="w-[200px] [h-200px]" />
               </div>
               <h4>{title}</h4>

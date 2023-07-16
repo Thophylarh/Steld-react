@@ -73,10 +73,10 @@ const Products = () => {
           <BsArrowRight className="text-white " />
         </div>
       </div>
-      <div className="md:flex md:justify-between items-center gap-x-4 pt-[1rem]">
+      <div className="   md:flex md:justify-between items-center gap-x-4 pt-[1rem]">
         {productItems.map(({ id, title, price, image }) => (
           <div className="" key={id}>
-            <div className="bg-[#f7f7f7] p-4  transition-transform duration-300 hover:scale-105 ">
+            <div className="p-4 transition-transform duration-300 hover:scale-105">
               <img src={image} alt={title} className="h-[260px] w-[260px]  " />
             </div>
             <h6>{title}</h6>
