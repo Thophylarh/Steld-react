@@ -57,8 +57,8 @@ const Products = () => {
   const fetchAllCategories = async () => {
     try {
       const res = await GetAllCategoriesApi();
-
-      return res;
+      const categories = res.map((e, index) => ({ id: index, title: e }));
+      return categories;
     } catch (error) {
       console.log(error);
     }
@@ -68,8 +68,8 @@ const Products = () => {
     try {
       const res = await Promise.all([fetchAllProducts(), fetchAllCategories()]);
       console.log(res);
-      setAllProducts(res[0])
-      setAllCategories(res[1])
+      setAllProducts(res[0]);
+      setAllCategories(res[1]);
     } catch (error) {
       console.log(error);
     }
@@ -92,7 +92,7 @@ const Products = () => {
 
         <nav className="pt-6">
           <ul className="flex items-center justify-center text-sm gap-x-8">
-            {productNav.map(({ id, title }) => (
+            {allCategories.map(({ id, title }) => (
               <li className="w-fit" key={id}>
                 <a
                   href="#!"
