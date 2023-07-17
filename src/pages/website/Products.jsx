@@ -90,7 +90,7 @@ const Products = () => {
           </span>
         </p>
 
-        <nav className="pt-6">
+        {/* <nav className="pt-6">
           <ul className="flex items-center justify-center text-sm gap-x-8">
             {allCategories.map(({ id, title }) => (
               <li className="w-fit" key={id}>
@@ -103,7 +103,7 @@ const Products = () => {
               </li>
             ))}
           </ul>
-        </nav>
+        </nav> */}
       </div>
 
       <div className="flex items-center justify-end pt-6 gap-x-1">
@@ -116,12 +116,12 @@ const Products = () => {
         </div>
       </div>
       <div className="   md:flex md:justify-between items-center  pt-[1rem]">
-        {allProducts.map(({ id, title, price, image }) => (
+        {allProducts.map(({ id, title, price, image, category }) => (
           <div
-            className=" border h-[520px] flex flex-col justify-between "
+            className=" border h-[700px] flex flex-col justify-between "
             key={id}
           >
-            <div className="relative transition-transform duration-300 hover:scale-105 h-96 w-96">
+            <div className="relative transition-transform duration-300 hover:scale-105 h-5/6 w-96">
               <img
                 src={image}
                 alt={title}
@@ -131,6 +131,7 @@ const Products = () => {
             <div className="w-full p-4 space-y-2 border h-1/5">
               <h6>{title}</h6>
               <p>${price}</p>
+              <p>{category}</p>
             </div>
           </div>
         ))}
