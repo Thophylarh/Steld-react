@@ -11,32 +11,7 @@ const productNav = [
   { id: 3, title: "Children" },
 ];
 
-const productItems = [
-  {
-    id: 0,
-    title: "Cotton shirt",
-    price: "$113.00",
-    image: blazer,
-  },
-  {
-    id: 1,
-    title: "Blue Blazer",
-    price: "$235.00",
-    image: sweatShirt,
-  },
-  {
-    id: 2,
-    title: "Black T-shirt",
-    price: "$79.00",
-    image: shirt,
-  },
-  {
-    id: 3,
-    title: "Check shirt",
-    price: "$98.00",
-    image: jacket,
-  },
-];
+
 
 const Products = () => {
   const [allProducts, setAllProducts] = useState([]);
