@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { PiCaretDoubleRightBold, PiCaretRightLight } from "react-icons/pi";
 import { WomanImg, cashmere } from "../../assets/png";
 import { blazer, sweatShirt } from "../../assets/Jpg";
 import shoe from "../../assets/png/shoe-bg-removebg-preview.png";
+import { GetAllCollectionsApi } from "../../services/apis/maincategory.api";
 
 const collectionItems = [
   {
@@ -28,6 +29,19 @@ const collectionItems = [
 ];
 
 const CollectionsMain = () => {
+  const [allCollections, setAllCollections] = useState([])
+
+const fetchAllCollections = async ()=>{
+  try{
+    const res = await GetAllCollectionsApi();
+    const collections = res.map((e,index)=>({id:index, title:e}));
+    return collections
+  }catch(error){
+    console.log(error)
+  }
+}
+
+  
   return (
     <div className="st_container">
       <div className="py-40 space-y-10">
@@ -56,6 +70,11 @@ const CollectionsMain = () => {
           ))}
         </div>
       </div>
+  
+
+
+
+              
     </div>
   );
 };

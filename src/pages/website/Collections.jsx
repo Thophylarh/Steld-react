@@ -30,42 +30,44 @@ const Collections = () => {
       id: 0,
       title: "Grey Suit",
       price: "$320.00",
-      img: jacket ,
+      img: jacket,
       //   bg:"red"
     },
   ];
   return (
     <div className=" st_container">
-        <div className="py-40">
-      <div className="">
-        <h1 className="text-4xl text-left">Collections of weekly most sold</h1>
-        <p className="text-sm text-left">
-          All the collections you need you can find from us without an hassle
-        </p>
-      </div>
-      <div className="flex items-center justify-between pt-[4rem]">
-        <div>
-          {itemsTab.map(({ id, title }) => (
-            <div
-              className="bg-[#ccc]  py-2 px-4 rounded-lg mt-2 hover:bg-[#333] hover:text-white"
-              key={id}
-            >
-              <p className="text-sm font-normal text-white"> {title}</p>
-            </div>
-          ))}
+      <div className="py-40">
+        <div className="">
+          <h1 className="text-4xl text-left">
+            Collections of weekly most sold
+          </h1>
+          <p className="text-sm text-left">
+            All the collections you need you can find from us without an hassle
+          </p>
         </div>
-        <div className="flex items-center justify-between w-9/12 gap-x-4">
-          {collectionsList.map(({ id, title, price,img }) => (
-            <div key={id}>
-              <div className="px-4 pb-4 transition-transform duration-300 hover:scale-105">
-                <img src={img} alt="" className="w-[200px] [h-200px]" />
+        <div className="flex items-center justify-between pt-[4rem]">
+          <div>
+            {itemsTab.map(({ id, title }) => (
+              <div
+                className="bg-[#ccc]  py-2 px-4 rounded-lg mt-2 hover:bg-[#333] hover:text-white"
+                key={id}
+              >
+                <p className="text-sm font-normal text-white"> {title}</p>
               </div>
-              <h4>{title}</h4>
-              <p>{price}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div className="flex items-center justify-between w-9/12 gap-x-4">
+            {collectionsList.map(({ id, title, price, img }) => (
+              <div key={id}>
+                <div className="px-4 pb-4 transition-transform duration-300 hover:scale-105">
+                  <img src={img} alt="" className="w-[200px] [h-200px]" />
+                </div>
+                <h4>{title}</h4>
+                <p>{price}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

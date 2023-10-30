@@ -33,4 +33,12 @@
   .active {
     @apply font-bold text-[#ee9598]; /* Add your desired active styles here */
   }
+  
+}
+@layer components{
+  .wrap-text {
+    max-width: 400px; /* Adjust the maximum width as needed */
+    white-space: normal;
+    word-wrap: break-word;
+  }
 }

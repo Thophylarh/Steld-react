@@ -4,25 +4,46 @@ import { PiCaretDoubleRightBold } from "react-icons/pi";
 import { Select, Space } from "antd";
 import { useState } from "react";
 import { GetShopProductsApi } from "../../services/apis/shop.api";
+import { SortAllCollectionsApi } from "../../services/apis/sortprice.api";
 
 const ShopMain = () => {
   const [shopProducts, setShopProducts] = useState([]);
+  const [sortOrder, setSortOrder] = useState("");
 
-  const getAllProducts = async () => {
-    try {
-      const res = GetShopProductsApi();
-   
-      console.log(res);
-      // setShopProducts(res);
-     
-      
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
+    const getAllProducts = async () => {
+      try {
+        const res = await GetShopProductsApi();
+        // console.log(res);
+        setShopProducts(res);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
     getAllProducts();
   }, []);
+
+  const productsChunks = [];
+  for (let i = 0; i < shopProducts.length; i += 3) {
+    productsChunks.push(shopProducts.slice(i, i + 3));
+  }
+
+  useEffect(() => {
+    const fetchShopProducts = async () => {
+      try {
+        const products = await SortAllCollectionsApi(sortOrder);
+        setShopProducts(products);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchShopProducts();
+  }, [sortOrder]);
+
+  const handleSortChange = (value) => {
+    setSortOrder(value);
+  };
 
   return (
     <div className="st_container ">
@@ -51,55 +72,45 @@ const ShopMain = () => {
         <div className="">
           <div className="flex items-center justify-between ">
             <div className="">
-              <h3> 117 Products</h3>
+              <h3>{shopProducts.length} Products</h3>
             </div>
             <Space wrap>
               <Select
-                defaultValue="Price"
+                defaultValue={sortOrder}
                 style={{ width: 120 }}
                 options={[
-                  { value: "Low to high", label: "Low to high" },
-                  { value: "High to low", label: "High to low" },
+                  { value: "desc", label: "Low to high" },
+                  { value: "asc", label: "High to low" },
                 ]}
+                onChange={handleSortChange}
               />
             </Space>
           </div>
           <div>
-            <div className="   md:flex md:justify-between items-center  pt-[1rem]">
-              {shopProducts.map(({ id, title, price, image, category }) => (
+            <div className=" flex  items-center flex-col  pt-[1rem]  h-[700px]">
+              {productsChunks.map((chunk, index) => (
                 <div
-                  className=" border h-[700px] flex flex-col justify-between "
-                  key={id}
+                  className="md:flex md:justify-between items-center pt-[1rem]"
+                  key={index}
                 >
-                  <div className="relative transition-transform duration-300 hover:scale-105 h-5/6 w-96">
-                    <img
-                      src={image}
-                      alt={title}
-                      className="absolute object-contain w-full h-full"
-                    />
-                  </div>
-                  <div className="w-full p-4 space-y-2 border h-1/5">
-                    <h6>{title}</h6>
-                    <p>${price}</p>
-                    <p>{category}</p>
-                  </div>
+                  {chunk.map(({ id, title, price, image, category }) => (
+                    <div className="flex flex-col justify-between " key={id}>
+                      <div className="transition-transform duration-300 hover:scale-105 w-96">
+                        <img
+                          src={image}
+                          alt={title}
+                          className="w-[200px] h-[200px]"
+                        />
+                      </div>
+                      <div className="w-full p-4 space-y-2 h-1/5">
+                        <h6 className="wrap-text">{title}</h6>
+                        <p>${price}</p>
+                        <p>{category}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               ))}
-              {/* {shopProducts.map(({id,title,price,category,image})=>(
-                <div className="" key={id}>
-                <div className="flex flex-col justify-between border">
-                <div className="">
-                  <div className="h-5/6 w-96"><img src={image} alt={title} className="object-contain w-full h-full" /></div>
-                 <div className="w-full p-4 space-y-2 border h-1/5">
-                 <h5>{title}</h5>
-                  <p>{category}</p>
-                  <p>{price}</p>
-                 </div>
-                 
-                </div>
-                </div>
-              </div>
-              ))} */}
             </div>
           </div>
         </div>

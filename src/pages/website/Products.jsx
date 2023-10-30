@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import { blazer, jacket, shirt, sweatShirt } from "../../assets/Jpg";
-import { WomanImg } from "../../assets/png";
 import { GetAllCategoriesApi, GetAllProductsApi } from "../../services";
 
 const productNav = [
@@ -10,8 +8,6 @@ const productNav = [
   { id: 2, title: "Women" },
   { id: 3, title: "Children" },
 ];
-
-
 
 const Products = () => {
   const [allProducts, setAllProducts] = useState([]);
